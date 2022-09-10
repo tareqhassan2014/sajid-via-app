@@ -16,8 +16,6 @@ const Pets = () => {
         });
     };
 
-    console.log(pet);
-
     return (
         <Card className="p-5">
             <Table responsive="sm">

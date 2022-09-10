@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Card, Table } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
 import { getBrand } from '../api/brandCategory';
 
 const Brand = () => {
@@ -12,14 +10,6 @@ const Brand = () => {
             setBrand(res.data.response);
         });
     }, []);
-
-    const navigate = useNavigate();
-    //@ts-ignore
-    const user = useSelector((state: any) => state.user);
-
-    if (!user.token) {
-        navigate('/signin');
-    }
 
     return (
         <Card className="p-5">

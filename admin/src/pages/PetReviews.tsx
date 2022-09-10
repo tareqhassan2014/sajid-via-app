@@ -1,6 +1,4 @@
 const PetReviews = () => {
-    return (
-        <div></div>
-    )
-}
-export default PetReviews
+    return <div>Pet Review</div>;
+};
+export default PetReviews;

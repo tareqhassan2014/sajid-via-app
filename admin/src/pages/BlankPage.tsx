@@ -1,6 +1,4 @@
 const BlankPage = () => {
-    return (
-        <div></div>
-    )
-}
-export default BlankPage
+    return <div>Blank page</div>;
+};
+export default BlankPage;

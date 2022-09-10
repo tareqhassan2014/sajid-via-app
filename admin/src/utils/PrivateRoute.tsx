@@ -1,21 +1,17 @@
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import SignIn from '../pages/SignIn';
 
 type Props = {
     children: JSX.Element;
 };
 
 const PrivateRoute = ({ children }: Props) => {
-    const navigate = useNavigate();
-    //@ts-ignore
-    const user = useSelector((state) => state.user);
+    const user = useSelector((state: any) => state.user);
 
-    //@ts-ignore
     if (user?.token) {
         return <>{children}</>;
     } else {
-        navigate('/signin');
-        return <></>;
+        return <SignIn />;
     }
 };
 

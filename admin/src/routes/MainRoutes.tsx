@@ -14,13 +14,18 @@ import ProductCategory from '../pages/ProductCategory';
 import ProductReviews from '../pages/ProductReviews';
 import Products from '../pages/Products';
 import ViewReviews from '../pages/ViewReviews';
+import PrivateRoute from '../utils/PrivateRoute';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('../pages/dashboard')));
 
 const MainRoutes = {
     path: '/',
-    element: <MainLayout />,
+    element: (
+        <PrivateRoute>
+            <MainLayout />
+        </PrivateRoute>
+    ),
     children: [
         {
             path: '/',
