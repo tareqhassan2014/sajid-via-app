@@ -6,7 +6,5 @@ interface IBody {
 }
 
 export const signIn = (body: IBody) => {
-    return axios.post('user/signin/', {
-        body,
-    });
+    return axios.post('user/signin/', body);
 };

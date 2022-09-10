@@ -1,46 +1,48 @@
-import { useEffect, useState } from "react";
-import { Card, Col, Container, Row, Table, Button } from "react-bootstrap";
-import { getProducts } from "../api/product";
-let index = 1
-
+import { useEffect, useState } from 'react';
+import { Card, Table } from 'react-bootstrap';
+import { getProducts } from '../api/product';
+let index = 1;
 
 const Products = () => {
-    let [product, setProduct] = useState([])
-    let [nextDisbale, setNextDisable] = useState(false)
-    let [prevDisbale, setPrevDisable] = useState(false)
+    let [product, setProduct] = useState([]);
+    let [nextDisbale, setNextDisable] = useState(false);
+    let [prevDisbale, setPrevDisable] = useState(false);
 
     useEffect(() => {
-        products()
-    }, [])
+        products();
+    }, []);
 
     const products = async () => {
-        await getProducts(index).then(res => {
-            setProduct(res.data.response)
-        })
-    }
+        await getProducts(index).then((res) => {
+            setProduct(res.data.response);
+        });
+    };
+
+    console.log(product);
 
     const prev = () => {
-        setNextDisable(false)
+        setNextDisable(false);
         if (index - 1 > 0) {
-            index -= 1
-            products()
+            index -= 1;
+            products();
         } else {
-            index = 1
-            setPrevDisable(true)
+            index = 1;
+            setPrevDisable(true);
         }
-    }
+    };
 
     const next = () => {
-        setPrevDisable(false)
-        index += 1
-        products()
-    }
+        setPrevDisable(false);
+        index += 1;
+        products();
+    };
 
     return (
-        <Card className='p-5'>
+        <Card className="p-5">
             <Table responsive="sm">
                 <thead>
                     <tr>
+                        <th>image</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
@@ -48,22 +50,42 @@ const Products = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {product && product.map((item: any, index) => (
-                        <tr key={index}>
-                            <td>{item.name}</td>
-                            <td>{item.description}</td>
-                            <td>{item.price}</td>
-                            <td>{item.details}</td>
-                        </tr>
-                    ))}
+                    {product &&
+                        product.map((item: any, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <img
+                                        src={item.ProductImage}
+                                        alt={item.name}
+                                    />
+                                </td>
+                                <td>{item.name}</td>
+                                <td>{item.description}</td>
+                                <td>{item.price}</td>
+                                <td>{item.details}</td>
+                            </tr>
+                        ))}
                 </tbody>
             </Table>
             <nav aria-label="Page navigation example">
-                <button disabled={prevDisbale} onClick={prev} aria-label="Previous"> <span aria-hidden="true" >&laquo;</span> </button>
-                <button aria-label="Previous" disabled={nextDisbale} onClick={next}> <span aria-hidden="true" >&raquo;</span> </button>
+                <button
+                    disabled={prevDisbale}
+                    onClick={prev}
+                    aria-label="Previous"
+                >
+                    {' '}
+                    <span aria-hidden="true">&laquo;</span>{' '}
+                </button>
+                <button
+                    aria-label="Previous"
+                    disabled={nextDisbale}
+                    onClick={next}
+                >
+                    {' '}
+                    <span aria-hidden="true">&raquo;</span>{' '}
+                </button>
             </nav>
         </Card>
-    )
-}
-export default Products
-
+    );
+};
+export default Products;

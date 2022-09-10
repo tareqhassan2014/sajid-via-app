@@ -1,44 +1,18 @@
 import { useState } from 'react';
 
 // material-ui
-import {
-    Avatar,
-    AvatarGroup,
-    Box,
-    Button,
-    Grid,
-    List,
-    ListItemAvatar,
-    ListItemButton,
-    ListItemSecondaryAction,
-    ListItemText,
-    MenuItem,
-    Stack,
-    TextField,
-    Typography
-} from '@mui/material';
 
 // project import
-import OrdersTable from './OrdersTable';
-import IncomeAreaChart from './IncomeAreaChart';
-import MonthlyBarChart from './MonthlyBarChart';
-import ReportAreaChart from './ReportAreaChart';
-import SalesColumnChart from './SalesColumnChart';
-import MainCard from '../../components/MainCard';
-import AnalyticEcommerce from '../../components/cards/statistics/AnalyticEcommerce';
 
 // assets
-import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
-import avatar1 from '../../assets/images/users/avatar-1.png';
-import avatar2 from '../../assets/images/users/avatar-2.png';
-import avatar3 from '../../assets/images/users/avatar-3.png';
-import avatar4 from '../../assets/images/users/avatar-4.png';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 // avatar style
 const avatarSX = {
     width: 36,
     height: 36,
-    fontSize: '1rem'
+    fontSize: '1rem',
 };
 
 // action style
@@ -48,23 +22,23 @@ const actionSX = {
     top: 'auto',
     right: 'auto',
     alignSelf: 'flex-start',
-    transform: 'none'
+    transform: 'none',
 };
 
 // sales report status
 const status = [
     {
         value: 'today',
-        label: 'Today'
+        label: 'Today',
     },
     {
         value: 'month',
-        label: 'This Month'
+        label: 'This Month',
     },
     {
         value: 'year',
-        label: 'This Year'
-    }
+        label: 'This Year',
+    },
 ];
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
@@ -72,9 +46,17 @@ const status = [
 const DashboardDefault = () => {
     const [value, setValue] = useState('today');
     const [slot, setSlot] = useState('week');
+    const navigate = useNavigate();
+
+    const user = useSelector((state) => state.user);
+
+    if (!user.token) {
+        navigate('/signin');
+    }
+    console.log(user.token);
 
     return (
-       /* <Grid container rowSpacing={4.5} columnSpacing={2.75}>
+        /* <Grid container rowSpacing={4.5} columnSpacing={2.75}>
             {/!* row 1 *!/}
             <Grid item xs={12} sx={{ mb: -2.25 }}>
                 <Typography variant="h5">Dashboard</Typography>

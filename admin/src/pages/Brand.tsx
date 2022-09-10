@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Card, Table } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { getBrand } from '../api/brandCategory';
 
 const Brand = () => {
@@ -11,7 +13,13 @@ const Brand = () => {
         });
     }, []);
 
-    console.log(brand);
+    const navigate = useNavigate();
+    //@ts-ignore
+    const user = useSelector((state: any) => state.user);
+
+    if (!user.token) {
+        navigate('/signin');
+    }
 
     return (
         <Card className="p-5">
@@ -19,6 +27,8 @@ const Brand = () => {
                 <thead>
                     <tr>
                         <th>Name</th>
+
+                        <th>createdBy</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,9 +36,13 @@ const Brand = () => {
                         brand.map(
                             (item: any, index) =>
                                 item.isActive && (
-                                    <tr key={index}>
-                                        <td>{item.name}</td>
-                                    </tr>
+                                    <>
+                                        <tr key={index}>
+                                            <td>{item.name}</td>
+
+                                            <td>{item.createdBy}</td>
+                                        </tr>
+                                    </>
                                 )
                         )}
                 </tbody>

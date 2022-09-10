@@ -13,7 +13,6 @@ import Pets from '../pages/Pets';
 import ProductCategory from '../pages/ProductCategory';
 import ProductReviews from '../pages/ProductReviews';
 import Products from '../pages/Products';
-import SignIn from '../pages/SignIn';
 import ViewReviews from '../pages/ViewReviews';
 
 // render - dashboard
@@ -76,10 +75,6 @@ const MainRoutes = {
         {
             path: 'product-reviews',
             element: <ProductReviews />,
-        },
-        {
-            path: 'signin',
-            element: <SignIn />,
         },
     ],
 };
