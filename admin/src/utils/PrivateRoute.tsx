@@ -8,11 +8,9 @@ type Props = {
 const PrivateRoute = ({ children }: Props) => {
     const user = useSelector((state: any) => state.user);
 
-    if (user?.token) {
-        return <>{children}</>;
-    } else {
-        return <SignIn />;
-    }
+    return user?.token ? <>{children}</> : <SignIn />;
 };
 
 export default PrivateRoute;
+
+// return user?.token ? <>{children}</> : <Navigate to="/signin" replace />;

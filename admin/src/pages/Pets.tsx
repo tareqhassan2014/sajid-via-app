@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Card, Table } from 'react-bootstrap';
 import { getPets } from '../api/pets';
+import IsActive from '../components/IsActive';
 let index = 1;
 
 const Pets = () => {
@@ -22,6 +23,7 @@ const Pets = () => {
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Active</th>
                         <th>Description</th>
                         <th>Breed</th>
                         <th>Birth Date</th>
@@ -34,6 +36,7 @@ const Pets = () => {
                         pet.map((item: any, index) => (
                             <tr key={index}>
                                 <td>{item.name}</td>
+                                <IsActive collection="pet" item={item} />
                                 <td>{item.description}</td>
                                 <td>{item.breed}</td>
                                 <td>{item.birthDate}</td>
