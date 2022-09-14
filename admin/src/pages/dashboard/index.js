@@ -53,7 +53,6 @@ const DashboardDefault = () => {
     if (!user.token) {
         navigate('/signin');
     }
-    console.log(user.token);
 
     return (
         /* <Grid container rowSpacing={4.5} columnSpacing={2.75}>

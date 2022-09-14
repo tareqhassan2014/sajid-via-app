@@ -1,10 +1,5 @@
-import axios from 'axios';
-import { API } from '../utils/config';
+import axios from './axios';
 
-export const getProducts = (index:number) => {
-    return axios.get(`${API}/product/admin/getAllProductsAdmin/${index-1}`, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-}
+export const getProducts = (index: number) => {
+    return axios.get(`product/admin/getAllProductsAdmin/${index - 1}`);
+};

@@ -14,10 +14,8 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 import { Link as DomLink } from 'react-router-dom';
-import { signIn } from '../api/SignIn';
-import { setUser } from '../store/reducers/user';
+import { useSignInMutation } from '../features/auth/authApi';
 
 type Inputs = {
     email: string;
@@ -26,8 +24,8 @@ type Inputs = {
 
 export default function SignIn() {
     const [show, setShow] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const dispatch = useDispatch();
+
+    const [signIn, { isLoading }] = useSignInMutation();
 
     const {
         register,
@@ -38,11 +36,8 @@ export default function SignIn() {
 
     const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
         try {
+            await signIn({ email, password });
             reset();
-            const res = await signIn({ email, password });
-            //@ts-ignore
-            dispatch(setUser(res.data?.token));
-            localStorage.setItem('token', res.data?.token);
         } catch (error: any) {
             console.log(error.message);
         }

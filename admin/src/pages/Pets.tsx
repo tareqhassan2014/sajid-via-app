@@ -1,21 +1,10 @@
-import { useEffect, useState } from 'react';
+import { Key } from 'react';
 import { Card, Table } from 'react-bootstrap';
-import { getPets } from '../api/pets';
 import IsActive from '../components/IsActive';
-let index = 1;
+import { useGetPetsQuery } from '../features/pet/petSlice';
 
 const Pets = () => {
-    let [pet, setPet] = useState([]);
-
-    useEffect(() => {
-        pets();
-    }, []);
-
-    const pets = async () => {
-        await getPets(index).then((res) => {
-            setPet(res.data.response);
-        });
-    };
+    const { data } = useGetPetsQuery('');
 
     return (
         <Card className="p-5">
@@ -32,8 +21,8 @@ const Pets = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {pet &&
-                        pet.map((item: any, index) => (
+                    {data?.response &&
+                        data?.response.map((item: any, index: Key) => (
                             <tr key={index}>
                                 <td>{item.name}</td>
                                 <IsActive collection="pet" item={item} />

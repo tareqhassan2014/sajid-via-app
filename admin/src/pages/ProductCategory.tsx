@@ -1,16 +1,10 @@
-import { useEffect, useState } from 'react';
+import { Key } from 'react';
 import { Card, Table } from 'react-bootstrap';
-import { getProductCategory } from '../api/productCategory';
 import IsActive from '../components/IsActive';
+import { useGetProductCategoryQuery } from '../features/product/productApi';
 
 const ProductCategory = () => {
-    let [category, setCategory] = useState([]);
-
-    useEffect(() => {
-        getProductCategory().then((res) => {
-            setCategory(res.data.response);
-        });
-    }, []);
+    const { data } = useGetProductCategoryQuery('');
 
     return (
         <Card className="p-5">
@@ -22,8 +16,8 @@ const ProductCategory = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {category &&
-                        category.map((item: any, index) => (
+                    {data?.response &&
+                        data?.response.map((item: any, index: Key) => (
                             <tr key={index}>
                                 <td>{item.name}</td>
                                 <IsActive

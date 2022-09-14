@@ -53,6 +53,7 @@
     "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
     "simplebar": "^5.3.5",
     "simplebar-react": "^2.3.6",
     "stylis": "4.1.1",

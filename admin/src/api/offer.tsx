@@ -1,10 +1,5 @@
-import axios from 'axios';
-import { API } from '../utils/config';
+import axios from './axios';
 
 export const Offer = () => {
-    return axios.get(`${API}/offer/admin`, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-}
+    return axios.get('offer/admin');
+};

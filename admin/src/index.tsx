@@ -1,35 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from './store';
-import 'simplebar/src/simplebar.css';
+import { PersistGate } from 'redux-persist/integration/react';
+import App from './App';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+
 import 'bootstrap/dist/css/bootstrap.css';
-
-
+import 'simplebar/src/simplebar.css';
 
 // third-party
 import { Provider as ReduxProvider } from 'react-redux';
-
-
-
+import { persistor, store } from './app/store';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-      <ReduxProvider store={store}>
-          <BrowserRouter basename="/">
-              <App/>
-          </BrowserRouter>
-      </ReduxProvider>
-  </React.StrictMode>
+    document.getElementById('root') as HTMLElement
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+root.render(
+    <React.StrictMode>
+        <PersistGate loading={null} persistor={persistor}>
+            <ReduxProvider store={store}>
+                <BrowserRouter basename="/">
+                    <App />
+                </BrowserRouter>
+            </ReduxProvider>
+        </PersistGate>
+    </React.StrictMode>
+);
+
 reportWebVitals();

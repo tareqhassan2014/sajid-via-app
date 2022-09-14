@@ -3,7 +3,6 @@ import { lazy } from 'react';
 // project import
 import Loadable from '../components/Loadable';
 import MainLayout from '../layout/MainLayout';
-
 import BlankPage from '../pages/BlankPage';
 import Brand from '../pages/Brand';
 import Offers from '../pages/Offers';

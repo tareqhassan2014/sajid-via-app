@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { Key, useState } from 'react';
 import { Card, Table } from 'react-bootstrap';
 import { getProducts } from '../api/product';
+import { useGetProductQuery } from '../features/product/productApi';
 let index = 1;
 
 const Products = () => {
@@ -8,9 +9,7 @@ const Products = () => {
     let [nextDisbale, setNextDisable] = useState(false);
     let [prevDisbale, setPrevDisable] = useState(false);
 
-    useEffect(() => {
-        products();
-    }, []);
+    const { data } = useGetProductQuery(index || 1);
 
     const products = async () => {
         await getProducts(index).then((res) => {
@@ -50,8 +49,8 @@ const Products = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {product &&
-                        product.map((item: any, index) => (
+                    {data?.response &&
+                        data?.response.map((item: any, index: Key) => (
                             <tr key={index}>
                                 <td>
                                     <img

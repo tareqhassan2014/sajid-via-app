@@ -1,10 +1,7 @@
 import Switch from '@mui/material/Switch';
 import * as React from 'react';
-import { updateBrand } from '../api/updateBrand';
-import { updatePet } from '../api/updatePet';
-import { updateOffer } from '../api/updatePet copy';
-import { updatePetCategory } from '../api/updatePetCategory';
-import { updateProductCategory } from '../api/updateProductCategory';
+import { useUpdateBrandMutation } from '../features/brand/brandApi';
+import { useUpdateProductCategoryMutation } from '../features/product/productApi';
 
 interface IProps {
     item: {
@@ -16,22 +13,40 @@ interface IProps {
 
 const IsActive = ({ item, collection }: IProps) => {
     const [checked, setChecked] = React.useState(item.isActive ? true : false);
+    const [updateBrand] = useUpdateBrandMutation();
+    const [updateProductCategory] = useUpdateProductCategoryMutation();
 
     const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         try {
-            const isActive = event.target.checked;
-            if (collection === 'brand') {
-                await updateBrand(item.id, isActive);
-            } else if (collection === 'productCategory') {
-                await updateProductCategory(item.id, isActive);
-            } else if (collection === 'petCategory') {
-                await updatePetCategory(item.id, isActive);
-            } else if (collection === 'pet') {
-                await updatePet(item.id, isActive);
-            } else if (collection === 'offer') {
-                await updateOffer(item.id, isActive);
+            const isActive = !!event.target.checked;
+            // if (collection === 'brand') {
+            //     await updateBrand(item.id, isActive);
+            // } else if (collection === 'productCategory') {
+            //     await updateProductCategory(item.id, isActive);
+            // } else if (collection === 'petCategory') {
+            //     await updatePetCategory(item.id, isActive);
+            // } else if (collection === 'pet') {
+            //     await updatePet(item.id, isActive);
+            // } else if (collection === 'offer') {
+            //     await updateOffer(item.id, isActive);
+            // }
+
+            switch (collection) {
+                case 'brand':
+                    await updateBrand({ param: item.id, body: { isActive } });
+                    setChecked(isActive);
+                    break;
+                case 'productCategory':
+                    await updateProductCategory({
+                        param: item.id,
+                        body: { isActive },
+                    });
+                    setChecked(isActive);
+                    break;
+
+                default:
+                    break;
             }
-            setChecked(isActive);
         } catch (error: any) {
             window.alert(
                 error.message ? error.message : 'something went wrong!'
