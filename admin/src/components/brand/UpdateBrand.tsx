@@ -111,6 +111,7 @@ export default function UpdateBrandModal({
                             variant="contained"
                             color="error"
                             endIcon={<CancelIcon />}
+                            onClick={() => closeModal(false)}
                         >
                             Cancel
                         </Button>

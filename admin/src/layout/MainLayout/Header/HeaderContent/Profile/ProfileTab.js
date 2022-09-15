@@ -2,19 +2,30 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 // material-ui
+import {
+    List,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
 // assets
-import { EditOutlined, ProfileOutlined, LogoutOutlined, UserOutlined, WalletOutlined } from '@ant-design/icons';
-import {Auth} from "aws-amplify";
-import {useNavigate} from "react-router-dom";
+import {
+    EditOutlined,
+    LogoutOutlined,
+    ProfileOutlined,
+    UserOutlined,
+    WalletOutlined,
+} from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../../../../features/auth/authSlice';
 
 // ==============================|| HEADER PROFILE - PROFILE TAB ||============================== //
 
 const ProfileTab = () => {
     const theme = useTheme();
-    const router = useNavigate()
+    const dispatch = useDispatch();
 
     const [selectedIndex, setSelectedIndex] = useState(0);
     const handleListItemClick = (event, index) => {
@@ -22,37 +33,61 @@ const ProfileTab = () => {
     };
 
     function handleLogout() {
-        Auth.signOut().then(r => router('/login'))
+        dispatch(logOut());
     }
 
     return (
-        <List component="nav" sx={{ p: 0, '& .MuiListItemIcon-root': { minWidth: 32, color: theme.palette.grey[500] } }}>
-            <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
+        <List
+            component="nav"
+            sx={{
+                p: 0,
+                '& .MuiListItemIcon-root': {
+                    minWidth: 32,
+                    color: theme.palette.grey[500],
+                },
+            }}
+        >
+            <ListItemButton
+                selected={selectedIndex === 0}
+                onClick={(event) => handleListItemClick(event, 0)}
+            >
                 <ListItemIcon>
                     <EditOutlined />
                 </ListItemIcon>
                 <ListItemText primary="Edit Profile" />
             </ListItemButton>
-            <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)}>
+            <ListItemButton
+                selected={selectedIndex === 1}
+                onClick={(event) => handleListItemClick(event, 1)}
+            >
                 <ListItemIcon>
                     <UserOutlined />
                 </ListItemIcon>
                 <ListItemText primary="View Profile" />
             </ListItemButton>
 
-            <ListItemButton selected={selectedIndex === 3} onClick={(event) => handleListItemClick(event, 3)}>
+            <ListItemButton
+                selected={selectedIndex === 3}
+                onClick={(event) => handleListItemClick(event, 3)}
+            >
                 <ListItemIcon>
                     <ProfileOutlined />
                 </ListItemIcon>
                 <ListItemText primary="Social Profile" />
             </ListItemButton>
-            <ListItemButton selected={selectedIndex === 4} onClick={(event) => handleListItemClick(event, 4)}>
+            <ListItemButton
+                selected={selectedIndex === 4}
+                onClick={(event) => handleListItemClick(event, 4)}
+            >
                 <ListItemIcon>
                     <WalletOutlined />
                 </ListItemIcon>
                 <ListItemText primary="Billing" />
             </ListItemButton>
-            <ListItemButton selected={selectedIndex === 2} onClick={()=>handleLogout()}>
+            <ListItemButton
+                selected={selectedIndex === 2}
+                onClick={() => handleLogout()}
+            >
                 <ListItemIcon>
                     <LogoutOutlined />
                 </ListItemIcon>
@@ -63,7 +98,7 @@ const ProfileTab = () => {
 };
 
 ProfileTab.propTypes = {
-    handleLogout: PropTypes.func
+    handleLogout: PropTypes.func,
 };
 
 export default ProfileTab;
