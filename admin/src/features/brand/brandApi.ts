@@ -4,6 +4,7 @@ export const brandApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getBrands: builder.query({
             query: () => '/brand/admin',
+            providesTags: ['brand'],
         }),
 
         updateBrand: builder.mutation({
@@ -12,6 +13,7 @@ export const brandApi = apiSlice.injectEndpoints({
                 url: `/brand/${param}`,
                 body: body,
             }),
+            invalidatesTags: ['brand'],
         }),
 
         createBrand: builder.mutation({
@@ -20,6 +22,7 @@ export const brandApi = apiSlice.injectEndpoints({
                 url: '/brand',
                 body,
             }),
+            invalidatesTags: ['brand'],
         }),
     }),
 });

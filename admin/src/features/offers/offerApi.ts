@@ -4,6 +4,7 @@ export const offerApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getOffer: builder.query({
             query: () => '/offer/admin',
+            providesTags: ['offer'],
         }),
 
         updateOffer: builder.mutation({
@@ -13,6 +14,7 @@ export const offerApi = apiSlice.injectEndpoints({
                 'Content-Type': 'multipart/form-data',
                 body,
             }),
+            invalidatesTags: ['offer'],
         }),
 
         addOffer: builder.mutation({
@@ -22,6 +24,7 @@ export const offerApi = apiSlice.injectEndpoints({
                 'Content-Type': 'multipart/form-data',
                 body,
             }),
+            invalidatesTags: ['offer'],
         }),
     }),
 });

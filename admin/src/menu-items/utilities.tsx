@@ -54,6 +54,13 @@ const utilities = {
             icon: icons.AntDesignOutlined,
         },
         {
+            id: 'products-order',
+            title: 'Product Order',
+            type: 'item',
+            url: '/product/order',
+            icon: icons.AntDesignOutlined,
+        },
+        {
             id: 'petCategory',
             title: 'Pet Category',
             type: 'item',

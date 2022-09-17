@@ -2,7 +2,7 @@ import { Key } from 'react';
 import { Card, Table } from 'react-bootstrap';
 import AddPetModal from '../components/pet/AddPetModal';
 import PetRow from '../components/pet/PetRow';
-import { useGetPetsQuery } from '../features/pet/petSlice';
+import { useGetPetsQuery } from '../features/pet/petApi';
 
 const Pets = () => {
     const { data } = useGetPetsQuery('');

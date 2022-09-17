@@ -4,14 +4,7 @@ export const petApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getPetCategory: builder.query({
             query: () => 'pet/category/admin',
-        }),
-
-        updateProductCategory: builder.mutation({
-            query: ({ param, body }) => ({
-                method: 'PUT',
-                url: `product/category/${param}`,
-                body: body,
-            }),
+            providesTags: ['pet-category'],
         }),
 
         updatePetCategory: builder.mutation({
@@ -20,15 +13,7 @@ export const petApi = apiSlice.injectEndpoints({
                 url: `/pet/category/${param}`,
                 body: body,
             }),
-        }),
-
-        updatePet: builder.mutation({
-            query: ({ param, body }) => ({
-                method: 'PUT',
-                url: `/pet/${param}`,
-                'Content-Type': 'multipart/form-data',
-                body,
-            }),
+            invalidatesTags: ['pet-category'],
         }),
 
         addPetCategory: builder.mutation({
@@ -37,6 +22,12 @@ export const petApi = apiSlice.injectEndpoints({
                 url: '/pet/category/',
                 body,
             }),
+            invalidatesTags: ['pet-category'],
+        }),
+
+        getPets: builder.query({
+            query: () => 'pet/admin/allpets',
+            providesTags: ['pet'],
         }),
 
         addPet: builder.mutation({
@@ -46,6 +37,18 @@ export const petApi = apiSlice.injectEndpoints({
                 'Content-Type': 'multipart/form-data',
                 body,
             }),
+            invalidatesTags: ['pet'],
+        }),
+
+        updatePet: builder.mutation({
+            query: ({ param, body }) => ({
+                method: 'PUT',
+                url: `/pet/${param}`,
+                'Content-Type': 'multipart/form-data',
+                body,
+            }),
+
+            invalidatesTags: ['pet-category'],
         }),
     }),
 });
@@ -56,4 +59,5 @@ export const {
     useAddPetCategoryMutation,
     useUpdatePetMutation,
     useAddPetMutation,
+    useGetPetsQuery,
 } = petApi;

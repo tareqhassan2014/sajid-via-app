@@ -10,6 +10,7 @@ import PetCategory from '../pages/PetCategory';
 import PetReviews from '../pages/PetReviews';
 import Pets from '../pages/Pets';
 import ProductCategory from '../pages/ProductCategory';
+import ProductOrder from '../pages/ProductOrder';
 import ProductReviews from '../pages/ProductReviews';
 import Products from '../pages/Products';
 import ViewReviews from '../pages/ViewReviews';
@@ -55,6 +56,10 @@ const MainRoutes = {
         {
             path: 'products',
             element: <Products />,
+        },
+        {
+            path: 'product/order',
+            element: <ProductOrder />,
         },
         {
             path: 'pet-category',

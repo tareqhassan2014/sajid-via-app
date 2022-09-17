@@ -3,7 +3,14 @@ import { RootState } from '../../app/store';
 
 export const apiSlice = createApi({
     reducerPath: 'api',
-    tagTypes: [],
+    tagTypes: [
+        'product-categories',
+        'brand',
+        'product',
+        'pet-category',
+        'pet',
+        'offer',
+    ],
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_API_URL,
         prepareHeaders: (headers, { getState }) => {
