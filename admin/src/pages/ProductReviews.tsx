@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button, Card, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { getProducts } from '../api/product';
@@ -9,10 +9,6 @@ const ProductReviews = () => {
     let [product, setProduct] = useState([]);
     let [nextDisbale, setNextDisable] = useState(false);
     let [prevDisbale, setPrevDisable] = useState(false);
-
-    useEffect(() => {
-        products();
-    }, []);
 
     const products = async () => {
         await getProducts(index).then((res) => {

@@ -5,8 +5,6 @@ import { useGetProductOrderQuery } from '../features/product/productApi';
 const ProductOrder = () => {
     const { data } = useGetProductOrderQuery('/');
 
-    console.log(data?.response);
-
     return (
         <div>
             <Card className="p-5">
