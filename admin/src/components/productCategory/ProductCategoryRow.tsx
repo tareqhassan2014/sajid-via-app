@@ -2,17 +2,20 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import IconButton from '@mui/material/IconButton';
 import React from 'react';
 import IsActive from '../IsActive';
-import UpdateBrandModal from './UpdateBrandModel';
+import UpdateProductCategoryModal from './UpdateProductCategoryModal';
 
-const BrandRow = ({ item }: any) => {
+interface IProps {
+    item: any;
+}
+
+const ProductCategoryRow = ({ item }: IProps) => {
     const [modalOpen, setModalOpen] = React.useState<boolean>(false);
 
     return (
         <>
             <tr>
                 <td>{item.name}</td>
-                <IsActive collection="brand" item={item} />
-
+                <IsActive collection="productCategory" item={item} />
                 <td>
                     <IconButton
                         aria-label="edit"
@@ -24,7 +27,7 @@ const BrandRow = ({ item }: any) => {
                 </td>
             </tr>
 
-            <UpdateBrandModal
+            <UpdateProductCategoryModal
                 closeModal={setModalOpen}
                 modalOpen={modalOpen}
                 item={item}
@@ -33,4 +36,4 @@ const BrandRow = ({ item }: any) => {
     );
 };
 
-export default BrandRow;
+export default ProductCategoryRow;

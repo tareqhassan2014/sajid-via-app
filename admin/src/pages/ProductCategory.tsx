@@ -1,34 +1,33 @@
 import { Key } from 'react';
 import { Card, Table } from 'react-bootstrap';
-import IsActive from '../components/IsActive';
+import CreateProductCategoryModel from '../components/productCategory/CreateProductCategoryModel';
+import ProductCategoryRow from '../components/productCategory/ProductCategoryRow';
 import { useGetProductCategoryQuery } from '../features/product/productApi';
 
 const ProductCategory = () => {
     const { data } = useGetProductCategoryQuery('');
 
     return (
-        <Card className="p-5">
-            <Table responsive="sm">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>IsActive</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data?.response &&
-                        data?.response.map((item: any, index: Key) => (
-                            <tr key={index}>
-                                <td>{item.name}</td>
-                                <IsActive
-                                    collection="productCategory"
-                                    item={item}
-                                />
-                            </tr>
-                        ))}
-                </tbody>
-            </Table>
-        </Card>
+        <>
+            <CreateProductCategoryModel />
+            <Card className="p-5">
+                <Table responsive="sm">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>IsActive</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data?.response &&
+                            data?.response.map((item: any, index: Key) => (
+                                <ProductCategoryRow key={index} item={item} />
+                            ))}
+                    </tbody>
+                </Table>
+            </Card>
+        </>
     );
 };
 

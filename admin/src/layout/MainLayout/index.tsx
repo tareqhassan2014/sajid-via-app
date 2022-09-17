@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
 import { Box, Toolbar, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 // project import
+import Breadcrumbs from '../../components/@extended/Breadcrumbs';
+import { openDrawer } from '../../features/menu/menuSlice';
+import navigation from '../../menu-items';
 import Drawer from './Drawer';
 import Header from './Header';
-import navigation from '../../menu-items';
-import Breadcrumbs from '../../components/@extended/Breadcrumbs';
-
-// types
-import { openDrawer } from '../../store/reducers/menu';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
@@ -22,7 +20,7 @@ const MainLayout = () => {
     const matchDownLG = useMediaQuery(theme.breakpoints.down('xl'));
     const dispatch = useDispatch();
 
-    const { drawerOpen } = useSelector((state :any) => state.menu);
+    const { drawerOpen } = useSelector((state: any) => state.menu);
 
     // drawer toggler
     const [open, setOpen] = useState(drawerOpen);
@@ -45,9 +43,18 @@ const MainLayout = () => {
         <Box sx={{ display: 'flex', width: '100%' }}>
             <Header open={open} handleDrawerToggle={handleDrawerToggle} />
             <Drawer open={open} handleDrawerToggle={handleDrawerToggle} />
-            <Box component="main" sx={{ width: '100%', flexGrow: 1, p: { xs: 2, sm: 3 } }}>
+            <Box
+                component="main"
+                sx={{ width: '100%', flexGrow: 1, p: { xs: 2, sm: 3 } }}
+            >
                 <Toolbar />
-                <Breadcrumbs navigation={navigation} title titleBottom card={false} divider={false} />
+                <Breadcrumbs
+                    navigation={navigation}
+                    title
+                    titleBottom
+                    card={false}
+                    divider={false}
+                />
                 <Outlet />
             </Box>
         </Box>

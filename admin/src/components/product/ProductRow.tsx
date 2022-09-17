@@ -2,17 +2,28 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import IconButton from '@mui/material/IconButton';
 import React from 'react';
 import IsActive from '../IsActive';
-import UpdateBrandModal from './UpdateBrandModel';
+import UpdateProductModal from './UpdateProductModal';
 
-const BrandRow = ({ item }: any) => {
+const ProductRow = ({ item }: any) => {
     const [modalOpen, setModalOpen] = React.useState<boolean>(false);
 
     return (
         <>
             <tr>
-                <td>{item.name}</td>
-                <IsActive collection="brand" item={item} />
+                <td>
+                    <img
+                        src={`https://petcareapi.sajidurapp.xyz/media/img/${item?.ProductImage}`}
+                        alt={item?.name}
+                        height="50"
+                        width="50"
+                    />
+                </td>
 
+                <td>{item?.name}</td>
+                <td>{item.description}</td>
+                <td>{item.details}</td>
+                <td>{item.price}</td>
+                <IsActive collection="product" item={item} />
                 <td>
                     <IconButton
                         aria-label="edit"
@@ -24,7 +35,7 @@ const BrandRow = ({ item }: any) => {
                 </td>
             </tr>
 
-            <UpdateBrandModal
+            <UpdateProductModal
                 closeModal={setModalOpen}
                 modalOpen={modalOpen}
                 item={item}
@@ -33,4 +44,4 @@ const BrandRow = ({ item }: any) => {
     );
 };
 
-export default BrandRow;
+export default ProductRow;

@@ -1,6 +1,7 @@
 import { Key } from 'react';
 import { Card, Table } from 'react-bootstrap';
 import BrandRow from '../components/brand/BrandRow';
+import CreateBrandModal from '../components/brand/CreateBrandModal';
 import { useGetBrandsQuery } from '../features/brand/brandApi';
 
 const Brand = () => {
@@ -8,13 +9,13 @@ const Brand = () => {
 
     return (
         <>
+            <CreateBrandModal />
             <Card className="p-5">
                 <Table responsive="sm">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>IsActive</th>
-                            <th>createdBy</th>
                             <th>Edit</th>
                         </tr>
                     </thead>

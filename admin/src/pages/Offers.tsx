@@ -1,43 +1,38 @@
-import { useEffect, useState } from 'react';
+import { Key } from 'react';
 import { Card, Table } from 'react-bootstrap';
-import { Offer } from '../api/offer';
-import IsActive from '../components/IsActive';
+import AddOfferModal from '../components/offer/AddOfferModal';
+import OfferRow from '../components/offer/OfferRow';
+import { useGetOfferQuery } from '../features/offers/offerApi';
 
 const Offers = () => {
-    let [offer, setOffer] = useState([]);
-
-    useEffect(() => {
-        Offer().then((res) => {
-            setOffer(res.data.response);
-        });
-    }, []);
-
-    console.log(offer);
+    const { data } = useGetOfferQuery('');
 
     return (
-        <Card className="p-5">
-            <Table responsive="sm">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Active</th>
-                        <th>Sub Title</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {offer &&
-                        offer.map((item: any, index) => (
-                            <tr key={index}>
-                                <td>{item.title}</td>
-                                <IsActive collection="offer" item={item} />
-                                <td>{item.subTitle}</td>
-                                <td>{item.description}</td>
-                            </tr>
-                        ))}
-                </tbody>
-            </Table>
-        </Card>
+        <>
+            <AddOfferModal />
+
+            <Card className="p-5">
+                <Table responsive="sm">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Sub Title</th>
+                            <th>Description</th>
+                            <th>Active</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data?.response &&
+                            data?.response.map((item: any, index: Key) => (
+                                <OfferRow item={item} key={index} />
+                            ))}
+                    </tbody>
+                </Table>
+            </Card>
+        </>
     );
 };
+
 export default Offers;

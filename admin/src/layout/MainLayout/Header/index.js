@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
 import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 // project import
 import AppBarStyled from './AppBarStyled';
@@ -22,14 +22,18 @@ const Header = ({ open, handleDrawerToggle }) => {
 
     // common header
     const mainHeader = (
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
             <IconButton
                 disableRipple
                 aria-label="open drawer"
                 onClick={handleDrawerToggle}
                 edge="start"
                 color="secondary"
-                sx={{ color: 'text.primary', bgcolor: open ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
+                sx={{
+                    color: 'text.primary',
+                    bgcolor: open ? iconBackColorOpen : iconBackColor,
+                    ml: { xs: 0, lg: -2 },
+                }}
             >
                 {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </IconButton>
@@ -43,9 +47,9 @@ const Header = ({ open, handleDrawerToggle }) => {
         color: 'inherit',
         elevation: 0,
         sx: {
-            borderBottom: `1px solid ${theme.palette.divider}`
+            borderBottom: `1px solid ${theme.palette.divider}`,
             // boxShadow: theme.customShadows.z1
-        }
+        },
     };
 
     return (
@@ -63,7 +67,7 @@ const Header = ({ open, handleDrawerToggle }) => {
 
 Header.propTypes = {
     open: PropTypes.bool,
-    handleDrawerToggle: PropTypes.func
+    handleDrawerToggle: PropTypes.func,
 };
 
 export default Header;

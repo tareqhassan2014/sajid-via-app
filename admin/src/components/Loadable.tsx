@@ -5,10 +5,11 @@ import Loader from './Loader';
 
 // ==============================|| LOADABLE - LAZY LOADING ||============================== //
 
-const Loadable = (Component: any) => (props: JSX.IntrinsicAttributes) => (
-    <Suspense fallback={<Loader />}>
-        <Component {...props} />
-    </Suspense>
-);
+const Loadable = (Component: any) => (props: JSX.IntrinsicAttributes) =>
+    (
+        <Suspense fallback={<Loader />}>
+            <Component {...props} />
+        </Suspense>
+    );
 
 export default Loadable;

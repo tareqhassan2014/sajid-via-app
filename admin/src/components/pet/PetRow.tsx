@@ -1,17 +1,34 @@
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import IconButton from '@mui/material/IconButton';
+import { IconButton } from '@mui/material';
 import React from 'react';
 import IsActive from '../IsActive';
-import UpdateBrandModal from './UpdateBrandModel';
+import UpdatePetModal from './UpdatePetModal';
 
-const BrandRow = ({ item }: any) => {
+interface IProps {
+    item: any;
+}
+
+const PetRow = ({ item }: IProps) => {
     const [modalOpen, setModalOpen] = React.useState<boolean>(false);
 
     return (
         <>
             <tr>
+                <td>
+                    <img
+                        src={`https://petcareapi.sajidurapp.xyz/media/img/${item?.petImage}`}
+                        alt={item?.name}
+                        height="50"
+                        width="50"
+                    />
+                </td>
                 <td>{item.name}</td>
-                <IsActive collection="brand" item={item} />
+                <td>{item.description}</td>
+                <td>{item.breed}</td>
+                <td>{item.birthDate}</td>
+                <td>{item.gender}</td>
+                <td>{item.weight}</td>
+                <IsActive collection="pet" item={item} />
 
                 <td>
                     <IconButton
@@ -24,7 +41,7 @@ const BrandRow = ({ item }: any) => {
                 </td>
             </tr>
 
-            <UpdateBrandModal
+            <UpdatePetModal
                 closeModal={setModalOpen}
                 modalOpen={modalOpen}
                 item={item}
@@ -33,4 +50,4 @@ const BrandRow = ({ item }: any) => {
     );
 };
 
-export default BrandRow;
+export default PetRow;

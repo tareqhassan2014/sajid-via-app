@@ -13,7 +13,19 @@ export const brandApi = apiSlice.injectEndpoints({
                 body: body,
             }),
         }),
+
+        createBrand: builder.mutation({
+            query: (body) => ({
+                method: 'POST',
+                url: '/brand',
+                body,
+            }),
+        }),
     }),
 });
 
-export const { useGetBrandsQuery, useUpdateBrandMutation } = brandApi;
+export const {
+    useGetBrandsQuery,
+    useUpdateBrandMutation,
+    useCreateBrandMutation,
+} = brandApi;
