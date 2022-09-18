@@ -1,22 +1,12 @@
-import DeleteIcon from '@mui/icons-material/Delete';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import IconButton from '@mui/material/IconButton';
 import React from 'react';
-import { useUpdateProductMutation } from '../../features/product/productApi';
+import DeleteItem from '../DeleteItem';
 import IsActive from '../IsActive';
 import UpdateProductModal from './UpdateProductModal';
 
 const ProductRow = ({ item }: any) => {
     const [modalOpen, setModalOpen] = React.useState<boolean>(false);
-    const [updateProduct] = useUpdateProductMutation();
-
-    const handelDelete = async (id: string) => {
-        try {
-            await updateProduct({ param: id, body: { isActive: -1 } });
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     return (
         <>
@@ -45,15 +35,7 @@ const ProductRow = ({ item }: any) => {
                     </IconButton>
                 </td>
 
-                <td>
-                    <IconButton
-                        aria-label="delete"
-                        color="error"
-                        onClick={() => handelDelete(item.id)}
-                    >
-                        <DeleteIcon />
-                    </IconButton>
-                </td>
+                <DeleteItem collection="product" item={item} />
             </tr>
 
             <UpdateProductModal
