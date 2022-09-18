@@ -24,7 +24,7 @@ const PetAdaptation = () => {
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Order Status</th>
+                            <th>Adaptation Request</th>
                             <th>Transaction ID</th>
                             <th>Payment Status</th>
                             <th>Cash On</th>
@@ -36,7 +36,11 @@ const PetAdaptation = () => {
                             data?.response.map((item: any, index: Key) => (
                                 <tr key={item.id}>
                                     <td>{item.id}</td>
-                                    <td>{item.orderStatus}</td>
+                                    <td>
+                                        {item?.orderStatus === 'Order placed'
+                                            ? 'Adaptation Requested'
+                                            : ' '}
+                                    </td>
                                     <td>
                                         {item.transactionID
                                             ? item.transactionID

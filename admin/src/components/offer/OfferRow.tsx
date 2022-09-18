@@ -1,6 +1,8 @@
+import DeleteIcon from '@mui/icons-material/Delete';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { IconButton } from '@mui/material';
 import React from 'react';
+import { useUpdateOfferMutation } from '../../features/offers/offerApi';
 import IsActive from '../IsActive';
 import UpdateOfferModal from './UpdateOfferModal';
 
@@ -10,6 +12,16 @@ interface IProps {
 
 const OfferRow = ({ item }: IProps) => {
     const [modalOpen, setModalOpen] = React.useState<boolean>(false);
+    const [updateOffer] = useUpdateOfferMutation();
+
+    const handelDelete = async (id: string) => {
+        try {
+            await updateOffer({ param: id, body: { isActive: -1 } });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <>
             <tr>
@@ -32,6 +44,16 @@ const OfferRow = ({ item }: IProps) => {
                         onClick={() => setModalOpen(true)}
                     >
                         <DriveFileRenameOutlineIcon />
+                    </IconButton>
+                </td>
+
+                <td>
+                    <IconButton
+                        aria-label="delete"
+                        color="error"
+                        onClick={() => handelDelete(item.id)}
+                    >
+                        <DeleteIcon />
                     </IconButton>
                 </td>
             </tr>

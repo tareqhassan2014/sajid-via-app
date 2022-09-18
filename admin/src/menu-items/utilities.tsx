@@ -10,7 +10,6 @@ import {
 
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import CategoryIcon from '@mui/icons-material/Category';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import PetsIcon from '@mui/icons-material/Pets';
@@ -33,13 +32,13 @@ const utilities = {
     title: 'Payments',
     type: 'group',
     children: [
-        {
-            id: 'blankPage',
-            title: 'Blank Page',
-            type: 'item',
-            url: '/blank-page',
-            icon: CheckBoxOutlineBlankIcon,
-        },
+        // {
+        //     id: 'blankPage',
+        //     title: 'Blank Page',
+        //     type: 'item',
+        //     url: '/blank-page',
+        //     icon: CheckBoxOutlineBlankIcon,
+        // },
         {
             id: 'brand',
             title: 'Brand',
@@ -113,13 +112,12 @@ const utilities = {
             icon: ShoppingCartIcon,
         },
         {
-            id: 'hostelOrder',
-            title: 'Hostel Order',
+            id: 'pet-are',
+            title: 'Pet Care',
             type: 'item',
-            url: 'hostel/order',
+            url: '/pet/care',
             icon: MapsHomeWorkIcon,
         },
-
         {
             id: 'offers',
             title: 'Offers',

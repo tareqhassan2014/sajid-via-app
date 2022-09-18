@@ -17,6 +17,7 @@ const ProductCategory = () => {
                             <th>Name</th>
                             <th>IsActive</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>

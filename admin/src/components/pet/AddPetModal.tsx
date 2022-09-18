@@ -67,6 +67,7 @@ export default function AddPetModal() {
             }
 
             await addPet(formData);
+            console.log(data);
 
             reset();
             handleClose();
@@ -180,7 +181,7 @@ export default function AddPetModal() {
                         })}
                     />
 
-                    <Box sx={{ textAlign: 'right' }}>
+                    <Box sx={{ textAlign: 'right', mb: 1 }}>
                         <Button
                             variant="contained"
                             component="label"
@@ -191,10 +192,7 @@ export default function AddPetModal() {
                                 hidden
                                 accept="image/*"
                                 type="file"
-                                {...(register('photo'),
-                                {
-                                    required: true,
-                                })}
+                                {...register('photo')}
                             />
                         </Button>
                     </Box>

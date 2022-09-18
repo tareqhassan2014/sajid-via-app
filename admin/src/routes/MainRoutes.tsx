@@ -65,7 +65,7 @@ const MainRoutes = {
             element: <ProductOrder />,
         },
         {
-            path: 'hostel/order',
+            path: 'pet/care',
             element: <HostelOrder />,
         },
         {

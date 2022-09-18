@@ -17,6 +17,7 @@ const PetCategory = () => {
                             <th>Name</th>
                             <th>Category</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,4 +31,5 @@ const PetCategory = () => {
         </>
     );
 };
+
 export default PetCategory;

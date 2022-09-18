@@ -45,7 +45,7 @@ export const petApi = apiSlice.injectEndpoints({
         addPet: builder.mutation({
             query: (body) => ({
                 method: 'POST',
-                url: '/pet/',
+                url: '/pet',
                 'Content-Type': 'multipart/form-data',
                 body,
             }),
@@ -60,7 +60,7 @@ export const petApi = apiSlice.injectEndpoints({
                 body,
             }),
 
-            invalidatesTags: ['pet-category'],
+            invalidatesTags: ['pet'],
         }),
     }),
 });

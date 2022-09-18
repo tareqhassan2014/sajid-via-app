@@ -21,6 +21,7 @@ const Offers = () => {
                             <th>Description</th>
                             <th>Active</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>

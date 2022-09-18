@@ -14,7 +14,6 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Link as DomLink } from 'react-router-dom';
 import { useSignInMutation } from '../features/auth/authApi';
 
 type Inputs = {
@@ -129,7 +128,7 @@ export default function SignIn() {
                                 Forgot password?
                             </Link>
                         </Grid>
-                        <Grid item>
+                        {/* <Grid item>
                             <DomLink
                                 style={{
                                     textDecoration: 'none',
@@ -139,7 +138,7 @@ export default function SignIn() {
                             >
                                 New here? Sign UP
                             </DomLink>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </Box>
             </Box>

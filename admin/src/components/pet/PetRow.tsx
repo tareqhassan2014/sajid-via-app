@@ -1,6 +1,8 @@
+import DeleteIcon from '@mui/icons-material/Delete';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { IconButton } from '@mui/material';
 import React from 'react';
+import { useUpdatePetMutation } from '../../features/pet/petApi';
 import IsActive from '../IsActive';
 import UpdatePetModal from './UpdatePetModal';
 
@@ -10,6 +12,15 @@ interface IProps {
 
 const PetRow = ({ item }: IProps) => {
     const [modalOpen, setModalOpen] = React.useState<boolean>(false);
+    const [updatePet] = useUpdatePetMutation();
+
+    const handelDelete = async (id: string) => {
+        try {
+            await updatePet({ param: id, body: { isActive: -1 } });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <>
@@ -37,6 +48,16 @@ const PetRow = ({ item }: IProps) => {
                         onClick={() => setModalOpen(true)}
                     >
                         <DriveFileRenameOutlineIcon />
+                    </IconButton>
+                </td>
+
+                <td>
+                    <IconButton
+                        aria-label="delete"
+                        color="error"
+                        onClick={() => handelDelete(item.id)}
+                    >
+                        <DeleteIcon />
                     </IconButton>
                 </td>
             </tr>

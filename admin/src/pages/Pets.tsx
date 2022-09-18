@@ -23,6 +23,7 @@ const Pets = () => {
                             <th>Weight</th>
                             <th>Active</th>
                             <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
