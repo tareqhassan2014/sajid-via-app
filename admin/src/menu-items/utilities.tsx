@@ -8,6 +8,16 @@ import {
     LoadingOutlined,
 } from '@ant-design/icons';
 
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import CategoryIcon from '@mui/icons-material/Category';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
+import PetsIcon from '@mui/icons-material/Pets';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import SellIcon from '@mui/icons-material/Sell';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 // icons
 const icons = {
     FontSizeOutlined,
@@ -17,8 +27,6 @@ const icons = {
     LoadingOutlined,
     AppstoreAddOutlined,
 };
-
-// ==============================|| MENU ITEMS - UTILITIES ||============================== //
 
 const utilities = {
     id: 'utilities',
@@ -30,22 +38,23 @@ const utilities = {
             title: 'Blank Page',
             type: 'item',
             url: '/blank-page',
-            icon: icons.FontSizeOutlined,
-        },
-        {
-            id: 'productCategory',
-            title: 'Product Category',
-            type: 'item',
-            url: '/product-category',
-            icon: icons.FontSizeOutlined,
+            icon: CheckBoxOutlineBlankIcon,
         },
         {
             id: 'brand',
             title: 'Brand',
             type: 'item',
             url: '/brand',
-            icon: icons.BarcodeOutlined,
+            icon: BookmarksIcon,
         },
+        {
+            id: 'productCategory',
+            title: 'Product Category',
+            type: 'item',
+            url: '/product-category',
+            icon: CategoryIcon,
+        },
+
         {
             id: 'products',
             title: 'Products',
@@ -58,7 +67,21 @@ const utilities = {
             title: 'Product Order',
             type: 'item',
             url: '/product/order',
-            icon: icons.AntDesignOutlined,
+            icon: ShoppingCartIcon,
+        },
+        {
+            id: 'productReviews',
+            title: 'Product Reviews',
+            type: 'item',
+            url: '/product-reviews',
+            icon: RateReviewIcon,
+        },
+        {
+            id: 'pets',
+            title: 'Pets',
+            type: 'item',
+            url: '/pets',
+            icon: PetsIcon,
         },
         {
             id: 'petCategory',
@@ -67,33 +90,42 @@ const utilities = {
             url: '/pet-category',
             icon: icons.AntDesignOutlined,
         },
+
         {
-            id: 'pets',
-            title: 'Pets',
+            id: 'PetAdaptation',
+            title: 'Pet Adaptation',
             type: 'item',
-            url: '/pets',
-            icon: icons.AntDesignOutlined,
+            url: '/pet/adaptation',
+            icon: FavoriteBorderIcon,
         },
         {
             id: 'petReviews',
             title: 'Pet Reviews',
             type: 'item',
             url: '/pet-reviews',
-            icon: icons.AntDesignOutlined,
+            icon: RateReviewIcon,
         },
         {
-            id: 'productReviews',
-            title: 'Product Reviews',
+            id: 'treatmentOrder',
+            title: 'Treatment Order',
             type: 'item',
-            url: '/product-reviews',
-            icon: icons.AntDesignOutlined,
+            url: '/treatment/order',
+            icon: ShoppingCartIcon,
         },
+        {
+            id: 'hostelOrder',
+            title: 'Hostel Order',
+            type: 'item',
+            url: 'hostel/order',
+            icon: MapsHomeWorkIcon,
+        },
+
         {
             id: 'offers',
             title: 'Offers',
             type: 'item',
             url: '/offers',
-            icon: icons.AntDesignOutlined,
+            icon: SellIcon,
         },
     ],
 };

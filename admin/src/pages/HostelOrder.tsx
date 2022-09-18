@@ -1,12 +1,13 @@
 import { Pagination } from '@mui/material';
 import { Key, useEffect, useState } from 'react';
 import { Card, Table } from 'react-bootstrap';
-import { useGetProductOrderQuery } from '../features/product/productApi';
+import { useGetPetHostelOrderQuery } from '../features/pet/petApi';
 
-const ProductOrder = () => {
+const HostelOrder = () => {
     const [page, setPage] = useState(1);
-    const { data, refetch } = useGetProductOrderQuery(page);
     const [count, setCount] = useState(5);
+
+    const { data, refetch } = useGetPetHostelOrderQuery(page);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
@@ -71,4 +72,4 @@ const ProductOrder = () => {
     );
 };
 
-export default ProductOrder;
+export default HostelOrder;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Card, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { getProducts } from '../api/product';
+
 let index = 1;
 
 const ProductReviews = () => {
@@ -10,17 +10,17 @@ const ProductReviews = () => {
     let [nextDisbale, setNextDisable] = useState(false);
     let [prevDisbale, setPrevDisable] = useState(false);
 
-    const products = async () => {
-        await getProducts(index).then((res) => {
-            setProduct(res.data.response);
-        });
-    };
+    // const products = async () => {
+    //     await getProducts(index).then((res) => {
+    //         setProduct(res.data.response);
+    //     });
+    // };
 
     const prev = () => {
         setNextDisable(false);
         if (index - 1 > 0) {
-            index -= 1;
-            products();
+            index--;
+            // products();
         } else {
             index = 1;
             setPrevDisable(true);
@@ -29,8 +29,8 @@ const ProductReviews = () => {
 
     const next = () => {
         setPrevDisable(false);
-        index += 1;
-        products();
+        index++;
+        // products();
     };
 
     const viewReviews = (id: any) => {

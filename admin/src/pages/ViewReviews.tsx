@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Card, Table } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { hideReview, productReview } from '../api/review';
+// import { hideReview, productReview } from '../api/review';
 
 const ViewReviews = () => {
     let [review, setReview] = useState([]);
@@ -16,9 +16,9 @@ const ViewReviews = () => {
             searchTrm: 'productID',
             value: id,
         };
-        productReview(data).then((res) => {
-            setReview(res.data.response);
-        });
+        // productReview(data).then((res) => {
+        //     setReview(res.data.response);
+        // });
     };
 
     const hide = (reviewId: any) => {
@@ -28,7 +28,7 @@ const ViewReviews = () => {
                 id: reviewId,
             };
 
-            hideReview(data).then((res) => reviewInit());
+            // hideReview(data).then((res) => reviewInit());
         };
     };
 

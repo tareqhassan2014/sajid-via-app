@@ -8,7 +8,7 @@ export const productApi = apiSlice.injectEndpoints({
         }),
 
         getProductOrder: builder.query({
-            query: () => '/order/get/product',
+            query: (page) => `/order/get/admin/product/${page - 1}`,
         }),
 
         getProduct: builder.query({

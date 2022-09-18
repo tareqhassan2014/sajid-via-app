@@ -5,7 +5,9 @@ import Loadable from '../components/Loadable';
 import MainLayout from '../layout/MainLayout';
 import BlankPage from '../pages/BlankPage';
 import Brand from '../pages/Brand';
+import HostelOrder from '../pages/HostelOrder';
 import Offers from '../pages/Offers';
+import PetAdaptation from '../pages/PetAdaptation';
 import PetCategory from '../pages/PetCategory';
 import PetReviews from '../pages/PetReviews';
 import Pets from '../pages/Pets';
@@ -13,6 +15,7 @@ import ProductCategory from '../pages/ProductCategory';
 import ProductOrder from '../pages/ProductOrder';
 import ProductReviews from '../pages/ProductReviews';
 import Products from '../pages/Products';
+import TreatmentOrder from '../pages/TreatmentOrder';
 import ViewReviews from '../pages/ViewReviews';
 import PrivateRoute from '../utils/PrivateRoute';
 
@@ -62,12 +65,24 @@ const MainRoutes = {
             element: <ProductOrder />,
         },
         {
+            path: 'hostel/order',
+            element: <HostelOrder />,
+        },
+        {
             path: 'pet-category',
             element: <PetCategory />,
         },
         {
             path: 'pets',
             element: <Pets />,
+        },
+        {
+            path: 'pet/adaptation',
+            element: <PetAdaptation />,
+        },
+        {
+            path: '/treatment/order',
+            element: <TreatmentOrder />,
         },
         {
             path: 'pet-reviews',

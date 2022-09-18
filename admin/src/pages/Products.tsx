@@ -1,30 +1,22 @@
-import { Key, useState } from 'react';
+import { Pagination } from '@mui/material';
+import { Key, useEffect, useState } from 'react';
 import { Card, Table } from 'react-bootstrap';
 import AddProductModal from '../components/product/AddProductModal';
 import ProductRow from '../components/product/ProductRow';
 import { useGetProductQuery } from '../features/product/productApi';
-let index = 1;
 
 const Products = () => {
-    let [nextDisbale, setNextDisable] = useState(false);
-    let [prevDisbale, setPrevDisable] = useState(false);
+    const [page, setPage] = useState(1);
+    const { data, refetch } = useGetProductQuery(page);
+    const [count, setCount] = useState(5);
 
-    const { data } = useGetProductQuery(index || 1);
-
-    const prev = () => {
-        setNextDisable(false);
-        if (index - 1 > 0) {
-            index -= 1;
-        } else {
-            index = 1;
-            setPrevDisable(true);
-        }
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
     };
 
-    const next = () => {
-        setPrevDisable(false);
-        index += 1;
-    };
+    useEffect(() => {
+        refetch();
+    }, [refetch]);
 
     return (
         <>
@@ -50,22 +42,16 @@ const Products = () => {
                             ))}
                     </tbody>
                 </Table>
-                <nav aria-label="Page navigation example">
-                    <button
-                        disabled={prevDisbale}
-                        onClick={prev}
-                        aria-label="Previous"
-                    >
-                        <span aria-hidden="true">&laquo;</span>
-                    </button>
-                    <button
-                        aria-label="Previous"
-                        disabled={nextDisbale}
-                        onClick={next}
-                    >
-                        <span aria-hidden="true">&raquo;</span>
-                    </button>
-                </nav>
+
+                <Pagination
+                    count={count}
+                    page={page}
+                    onChange={handleChange}
+                    variant="outlined"
+                    shape="rounded"
+                    //@ts-ignore
+                    color="success"
+                />
             </Card>
         </>
     );

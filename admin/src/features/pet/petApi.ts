@@ -7,6 +7,18 @@ export const petApi = apiSlice.injectEndpoints({
             providesTags: ['pet-category'],
         }),
 
+        getPetAdaptation: builder.query({
+            query: (page) => `/order/get/admin/pet/${page - 1}`,
+        }),
+
+        getPetHostelOrder: builder.query({
+            query: (page) => `/order/get/admin/hotel/${page - 1}`,
+        }),
+
+        getPetTreatmentOrder: builder.query({
+            query: (page) => `/order/get/admin/treatment/${page - 1}`,
+        }),
+
         updatePetCategory: builder.mutation({
             query: ({ param, body }) => ({
                 method: 'PUT',
@@ -56,7 +68,10 @@ export const petApi = apiSlice.injectEndpoints({
 export const {
     useGetPetCategoryQuery,
     useUpdatePetCategoryMutation,
+    useGetPetTreatmentOrderQuery,
+    useGetPetHostelOrderQuery,
     useAddPetCategoryMutation,
+    useGetPetAdaptationQuery,
     useUpdatePetMutation,
     useAddPetMutation,
     useGetPetsQuery,
