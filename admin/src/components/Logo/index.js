@@ -13,16 +13,21 @@ import config from '../../config';
 // ==============================|| MAIN LOGO ||============================== //
 
 const LogoSection = ({ sx, to }) => (
-    <ButtonBase disableRipple component={Link} to={!to ? config.defaultPath : to} sx={sx}>
-        <Typography variant={'h3'} sx={{color:'#02A4D3'}}>
-            PETS CARE
+    <ButtonBase
+        disableRipple
+        component={Link}
+        to={!to ? config.defaultPath : to}
+        sx={sx}
+    >
+        <Typography variant={'h3'} sx={{ color: '#02A4D3' }}>
+            AZ Tech
         </Typography>
     </ButtonBase>
 );
 
 LogoSection.propTypes = {
     sx: PropTypes.object,
-    to: PropTypes.string
+    to: PropTypes.string,
 };
 
 export default LogoSection;

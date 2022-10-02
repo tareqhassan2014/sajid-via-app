@@ -10,6 +10,7 @@ export const apiSlice = createApi({
         'pet-category',
         'pet',
         'offer',
+        'hotel-book',
     ],
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_API_URL,

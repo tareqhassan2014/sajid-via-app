@@ -5,6 +5,7 @@ import Loadable from '../components/Loadable';
 import MainLayout from '../layout/MainLayout';
 import BlankPage from '../pages/BlankPage';
 import Brand from '../pages/Brand';
+import HostelBook from '../pages/HostelBook';
 import HostelOrder from '../pages/HostelOrder';
 import Offers from '../pages/Offers';
 import PetAdaptation from '../pages/PetAdaptation';
@@ -99,6 +100,10 @@ const MainRoutes = {
         {
             path: 'product-reviews',
             element: <ProductReviews />,
+        },
+        {
+            path: 'books',
+            element: <HostelBook />,
         },
     ],
 };

@@ -125,6 +125,13 @@ const utilities = {
             url: '/offers',
             icon: SellIcon,
         },
+        {
+            id: 'book-request',
+            title: 'Book Request',
+            type: 'item',
+            url: '/books',
+            icon: SellIcon,
+        },
     ],
 };
 

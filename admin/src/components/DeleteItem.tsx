@@ -1,6 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
 import { useUpdateBrandMutation } from '../features/brand/brandApi';
+import { useUpdateHostelBookMutation } from '../features/hostel/hostelApi';
 import { useUpdateOfferMutation } from '../features/offers/offerApi';
 import {
     useUpdatePetCategoryMutation,
@@ -20,12 +21,13 @@ interface IProps {
 }
 
 const DeleteItem = ({ item, collection }: IProps) => {
-    const [updateBrand] = useUpdateBrandMutation();
-    const [updateProduct] = useUpdateProductMutation();
-    const [updateProductCategory] = useUpdateProductCategoryMutation();
-    const [updateOffer] = useUpdateOfferMutation();
-    const [updatePetCategory] = useUpdatePetCategoryMutation();
     const [updatePet] = useUpdatePetMutation();
+    const [updateBrand] = useUpdateBrandMutation();
+    const [updateOffer] = useUpdateOfferMutation();
+    const [updateProduct] = useUpdateProductMutation();
+    const [updateHostelBook] = useUpdateHostelBookMutation();
+    const [updatePetCategory] = useUpdatePetCategoryMutation();
+    const [updateProductCategory] = useUpdateProductCategoryMutation();
 
     const handleJDelete = async () => {
         try {
@@ -57,6 +59,15 @@ const DeleteItem = ({ item, collection }: IProps) => {
                         param: item.id,
                         body: { isActive },
                     });
+
+                    break;
+                case 'hostel-book':
+                    await updateHostelBook({
+                        param: item.id,
+                        body: { isActive: -3 },
+                    });
+
+                    console.log('hostel-book');
 
                     break;
 
